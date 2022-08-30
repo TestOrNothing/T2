@@ -4,11 +4,13 @@ from rules.rule import *
 from rules.eval_used import *
 from rules.uncouple_method import *
 from rules.dummy_if import *
+from rules.suspiciousVariableName import *
 from rules.uninitialized_attribute import *
+from rules.neverReadedVariable import *
 
 path = "input-code/"
 dir_list = os.listdir(path)
- 
+
 print("Analyzing files in '", path, "' :")
 
 
@@ -17,7 +19,7 @@ for file in dir_list:
     fileContent = open(path+file).read()
     tree = parse(fileContent)
     warnings = []
-    for ruleClass in Rule.__subclasses__():    
+    for ruleClass in Rule.__subclasses__():
         newRule = ruleClass()
         result = newRule.analyze(tree)
         warnings.extend(result)
