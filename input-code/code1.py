@@ -15,6 +15,8 @@ class Person:
         x = 3
         if True:
             print("something")
+        else:
+            pass
 
     def notUse(self):
         x = 1  # NeverReadedVariable
