@@ -19,5 +19,15 @@ class Person:
     def notUse(self):
         x = 1  # NeverReadedVariable
         y = 2
-        x += 1
         return 1
+
+
+class Person2:
+    def __init__(self):
+        self.name
+
+    def getName(self):
+        return self.name
+
+    def setName(self, newName):
+        self.name = newName
