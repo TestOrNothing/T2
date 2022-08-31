@@ -7,7 +7,7 @@ from rules.dummy_if import *
 from rules.suspiciousVariableName import *
 from rules.uninitialized_attribute import *
 from rules.neverReadedVariable import *
-from rules.DataClass import *
+from rules.dataClass import *
 
 path = "input-code/"
 dir_list = os.listdir(path)
