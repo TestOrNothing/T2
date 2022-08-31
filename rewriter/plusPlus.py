@@ -4,12 +4,12 @@ import ast
 
 class PlusPlusTransformer(NodeTransformer):
     def visit_Assign(self, node: Assign):
-        target = node.__dict__["targets"][0]
-        if isinstance(node.__dict__["value"], BinOp):
-            binop = node.__dict__["value"]
-            left = binop.__dict__["left"]
-            right = binop.__dict__["right"]
-            op = binop.__dict__["op"]
+        target = node.targets[0]
+        if isinstance(node.value, BinOp):
+            binop = node.value
+            left = binop.left
+            right = binop.right
+            op = binop.op
             if isinstance(op, Add) and (isinstance(left, Name) or isinstance(right, Name)) and ((isinstance(left, Constant) or isinstance(right, Constant))):
                 if isinstance(left, Name):
                     new = AugAssign(target, Add(), right)

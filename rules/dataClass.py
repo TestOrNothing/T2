@@ -4,17 +4,17 @@ from .rule import *
 class DataClassVisitor(WarningNodeVisitor):
     def visit_ClassDef(self, node: ClassDef):
         dataclass = True
-        for func in node.__dict__["body"]:
+        for func in node.body:
             if dataclass:
-                if func.__dict__["name"] == '__init__':
+                if func.name == '__init__':
                     pass
-                elif len(func.__dict__["body"]) == 1:
-                    if func.__dict__["body"][0].__class__ == Return and func.__dict__["body"][0].__dict__["value"].__class__ == Attribute:
+                elif len(func.body) == 1:
+                    if func.body[0].__class__ == Return and func.body[0].value.__class__ == Attribute:
                         pass
-                    elif func.__dict__["body"][0].__class__ == Assign and func.__dict__["body"][0].__dict__["targets"][0].__class__ == Attribute:
+                    elif func.body[0].__class__ == Assign and func.body[0].targets[0].__class__ == Attribute and isinstance(func.body[0].value, Name):
                         existe = False
-                        for val in func.__dict__["args"].__dict__["args"]:
-                            if val.arg == func.__dict__["body"][0].__dict__["value"].__dict__["id"]:
+                        for val in func.args.args:
+                            if val.arg == func.body[0].value.id:
                                 existe = True
                         if not existe:
                             dataclass = False
