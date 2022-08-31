@@ -11,12 +11,13 @@ class Person:
     def doit(self):
         eval("2+2")
 
-    def somethig(self):
+    def something(self):
+        x = 3
         if True:
             print("something")
 
     def notUse(self):
         x = 1  # NeverReadedVariable
         y = 2
-        x += y
-        return 1 + 1
+        x += 1
+        return 1
