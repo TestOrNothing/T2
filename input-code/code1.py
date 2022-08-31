@@ -20,3 +20,15 @@ class Person:
         y = 2
         x += y
         return 1 + 1
+
+class Person2:
+    def __init__(self):
+        self.name
+
+    def getName(self):
+        return self.name
+
+    def setName(self,newName):
+        self.name = newName
+
+
