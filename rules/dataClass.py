@@ -9,9 +9,9 @@ class DataClassVisitor(WarningNodeVisitor):
                 if func.name == '__init__':
                     pass
                 elif len(func.body) == 1:
-                    if func.body[0].__class__ == Return and func.body[0].value.__class__ == Attribute:
+                    if isinstance(func.body[0], Return) and isinstance(func.body[0].value, Attribute):
                         pass
-                    elif func.body[0].__class__ == Assign and func.body[0].targets[0].__class__ == Attribute and isinstance(func.body[0].value, Name):
+                    elif isinstance(func.body[0], Assign) and isinstance(func.body[0].targets[0], Attribute) and isinstance(func.body[0].value, Name):
                         existe = False
                         for val in func.args.args:
                             if val.arg == func.body[0].value.id:
@@ -25,7 +25,8 @@ class DataClassVisitor(WarningNodeVisitor):
             else:
                 break
         if dataclass:
-            self.addWarning(f'DataClass {node.name}', node.lineno, 'this class is storing data')
+            self.addWarning(f'DataClass {node.name}',
+                            node.lineno, 'this class is storing data')
 
 
 class DataClassRule(Rule):

@@ -1,5 +1,4 @@
 class Person:
-
     def __init__(self, firstName, lastName, a):
         self.firstName = firstName
         self.lastName = lastName
@@ -9,6 +8,6 @@ class Person:
         return self.firstName + self.lastName
 
     def notUse(self):
-        x = 1
+        x = 1  # NeverReadedVariable
         y = 2
         return x + y

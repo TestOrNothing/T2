@@ -1,15 +1,11 @@
 from ast import *
 import os
 from rules.rule import *
-from rules.eval_used import *
-from rules.uncouple_method import *
-from rules.dummy_if import *
 from rules.suspiciousVariableName import *
-from rules.uninitialized_attribute import *
 from rules.neverReadedVariable import *
 from rules.dataClass import *
 
-path = "input-code/"
+path = "input-code/analyze/"
 dir_list = os.listdir(path)
 
 print("Analyzing files in '", path, "' :")
